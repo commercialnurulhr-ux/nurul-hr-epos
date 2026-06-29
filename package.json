@@ -1,0 +1,14 @@
+{
+  "name": "nurul-hr-epos",
+  "version": "1.0.0",
+  "description": "Enterprise EPOS and Inventory Management System for NURUL HR SDN BHD",
+  "scripts": {
+    "dev": "echo 'Development mode - see backend and frontend folders for scripts'",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
+  },
+  "keywords": ["epos", "pos", "inventory", "retail", "brunei"],
+  "author": "NURUL HR SDN BHD",
+  "license": "Proprietary"
+}

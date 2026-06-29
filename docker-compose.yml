@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: nurul-hr-epos-db
+    environment:
+      POSTGRES_USER: epos_user
+      POSTGRES_PASSWORD: secure_password_change_this
+      POSTGRES_DB: nurul_hr_epos
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U epos_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - epos_network
+
+  # Backend API
+  backend:
+    image: node:18-alpine
+    container_name: nurul-hr-epos-backend
+    working_dir: /app/backend
+    environment:
+      NODE_ENV: production
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: nurul_hr_epos
+      DB_USER: epos_user
+      DB_PASSWORD: secure_password_change_this
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app/backend
+    networks:
+      - epos_network
+    restart: unless-stopped
+
+  # Frontend
+  frontend:
+    image: node:18-alpine
+    container_name: nurul-hr-epos-frontend
+    working_dir: /app/frontend
+    environment:
+      REACT_APP_API_URL: http://localhost:3000
+    ports:
+      - "3001:3001"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app/frontend
+    networks:
+      - epos_network
+    restart: unless-stopped
+
+  # Redis for caching and job queue
+  redis:
+    image: redis:7-alpine
+    container_name: nurul-hr-epos-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - epos_network
+    restart: unless-stopped
+
+volumes:
+  db_data:
+  redis_data:
+
+networks:
+  epos_network:
+    driver: bridge
