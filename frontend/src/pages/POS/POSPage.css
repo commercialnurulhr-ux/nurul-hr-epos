@@ -1,0 +1,122 @@
+.pos-container {
+  display: flex;
+  height: calc(100vh - 70px);
+  gap: 20px;
+  padding: 20px;
+}
+
+.pos-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pos-scanner {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pos-cart {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.pos-controls {
+  width: 300px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pos-total {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.pos-total h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.pos-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-checkout {
+  background: #27ae60;
+  color: white;
+}
+
+.btn-checkout:hover:not(:disabled) {
+  background: #229954;
+}
+
+.btn-hold {
+  background: #f39c12;
+  color: white;
+}
+
+.btn-hold:hover {
+  background: #e67e22;
+}
+
+.btn-clear {
+  background: #e74c3c;
+  color: white;
+}
+
+.btn-clear:hover {
+  background: #c0392b;
+}
+
+.btn-recall {
+  background: #3498db;
+  color: white;
+  width: 100%;
+}
+
+.btn-recall:hover {
+  background: #2980b9;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pos-held-bills {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.pos-held-bills h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 14px;
+}

@@ -1,0 +1,33 @@
+.header {
+  background: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ecf0f1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-left h1 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 20px;
+}
+
+.header-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header-time {
+  font-size: 14px;
+  color: #666;
+  font-weight: 600;
+}
+
+.header-user {
+  font-size: 14px;
+  color: #667eea;
+  font-weight: 600;
+}
